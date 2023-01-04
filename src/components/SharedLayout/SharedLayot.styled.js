@@ -25,7 +25,7 @@ export const StyledLink = styled(NavLink)`
       0px 2px 2px rgba(0, 0, 0, 0.12);
   }
   &.active {
-    color: tomato;
+    color:  #188ce8;
   }
 
   &.active:hover {
