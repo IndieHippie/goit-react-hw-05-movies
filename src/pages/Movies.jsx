@@ -1,11 +1,11 @@
 import { lazy } from "react";
 
-const SearchBox = lazy(() => import('../components/SearchBox/SearchBox'));
+const SearchInput = lazy(() => import('../components/SearchInput/SearchInput'));
 
 const Movies = () => {
   return (
     <div>
-      <SearchBox />
+      <SearchInput />
     </div>
   );
 };

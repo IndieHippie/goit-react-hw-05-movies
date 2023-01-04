@@ -2,13 +2,13 @@ import { useSearchParams } from 'react-router-dom';
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { getSearchMovies } from 'servises/API';
 import { ToastContainer, toast } from 'react-toastify';
-import { Input, SearchBtn, SearchForm } from './SearchBox.styled';
+import { Input, SearchBtn, SearchForm } from './SearchInput.styled';
 import Loader from 'components/Loader/Loader';
 import 'react-toastify/dist/ReactToastify.css';
 
 const MoviesList = lazy(() => import('components/MoviesList/MoviesList'));
 
-const SearchBox = () => {
+const SearchInput = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const params = searchParams.get('query') ?? '';
@@ -78,4 +78,4 @@ const SearchBox = () => {
   );
 };
 
-export default SearchBox;
+export default SearchInput;

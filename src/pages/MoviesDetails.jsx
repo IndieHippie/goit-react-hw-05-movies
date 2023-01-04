@@ -9,6 +9,7 @@ import { useEffect, useState, Suspense } from 'react';
 import noImage from '../images/no-image.jpg';
 import { getMovieDetails } from 'servises/API';
 import Loader from 'components/Loader/Loader';
+import { RiArrowGoBackFill } from 'react-icons/ri';
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -33,7 +34,7 @@ const MovieDetails = () => {
 
   return (
     <div>
-      <Link style={{padding: '5px'}} to={goBack}>Go back</Link>
+      <Link style={{padding: '5px'}} to={goBack}><RiArrowGoBackFill/> Go back</Link>
       <div>
         <img
           src={

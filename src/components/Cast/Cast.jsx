@@ -13,11 +13,16 @@ const Cast = () => {
   if (!cast) return;
 
   return (
-    <ul style={{listStyle: "none"}}>
+    <ul
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        listStyle: 'none',
+      }}
+    >
       {cast.map(({ cast_id, profile_path, name, character }) => (
-        <li
-          style={{ color: "black" }}
-          key={cast_id}>
+        <li style={{ color: 'black' }} key={cast_id}>
           <img
             src={
               profile_path
@@ -29,7 +34,7 @@ const Cast = () => {
             height={150}
           />
           <p>{name}</p>
-          <p>Character: {character}</p>
+          <p>{character}</p>
         </li>
       ))}
     </ul>
