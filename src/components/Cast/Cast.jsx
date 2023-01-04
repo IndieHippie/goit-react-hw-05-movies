@@ -13,9 +13,11 @@ const Cast = () => {
   if (!cast) return;
 
   return (
-    <ul>
+    <ul style={{listStyle: "none"}}>
       {cast.map(({ cast_id, profile_path, name, character }) => (
-        <li key={cast_id}>
+        <li
+          style={{ color: "black" }}
+          key={cast_id}>
           <img
             src={
               profile_path

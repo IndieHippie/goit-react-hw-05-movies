@@ -10,35 +10,56 @@ const MoviesList = lazy(() => import('components/MoviesList/MoviesList'));
 
 const SearchBox = () => {
   const [movies, setMovies] = useState([]);
-    const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const params = searchParams.get('query') ?? '';
 
-    const toastOptions = {
-    position: 'top-center',
+  const toastOptions = {
+    position: 'top-right',
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
-    theme: 'colored',
+    theme: 'light',
   };
 
   const handleSubmit = e => {
     e.preventDefault();
 
     if (e.target[0].value === '') {
-      toast.info('Enter search value', toastOptions);
+      toast.info('😸Search something, pls', toastOptions);
       return;
     }
+    // else {
+    //   toast.success('😸Here you go', toastOptions);
+    // }
     return setSearchParams({ query: e.target[0].value.toLowerCase() });
   };
 
-  useEffect(() => {
-    const movieTitle = searchParams.get('query');
-    if (movieTitle) {
-      getSearchMovies(movieTitle).then(resp => setMovies(resp));
-    }
-  }, [searchParams]);
+  useEffect(() => { 
+  const toastNothingFound = {
+    position: 'top-right',
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'dark',
+    };
+    
+    if (!params) return;
+    getSearchMovies(params)
+      .then(response => {
+        setMovies(response);
+        if (response.length === 0) {
+          toast.warn('👽Emmmm...nope...try something else, pls🦄', toastNothingFound);
+        };
+      })
+      .catch(error => console.log(error))
+
+  }, [params]);
 
   return (
     <div>
@@ -48,7 +69,7 @@ const SearchBox = () => {
       </SearchForm>
 
       {movies.length > 0 && (
-        <Suspense fallback={<Loader/>}>
+        <Suspense fallback={<Loader />}>
           <MoviesList movies={movies} />
         </Suspense>
       )}

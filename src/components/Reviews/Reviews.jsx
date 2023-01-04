@@ -12,11 +12,11 @@ const Reviews = () => {
   if (!reviews) return;
 
   return reviews.length > 0 ? (
-    <ul>
+    <ul style={{listStyle: "none"}}>
       {reviews.map(({ id, author, content }) => (
         <li key={id}>
-          <h3>Author: {author}</h3>
-          <p>"{content}"</p>
+          <h3 style={{color: "black"}}>Author: {author}</h3>
+          <p style={{color: "black"}}>"{content}"</p>
         </li>
       ))}
     </ul>
